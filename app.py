@@ -1,8 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
-from flask_login import UserMixin, LoginManager
+from flask_login import UserMixin, LoginManager, login_required
 from dotenv import load_dotenv
 import os
 
@@ -39,9 +39,21 @@ class Users(db.Model, UserMixin):
 def load_user(user_id):
     return Users.query.get(int(user_id))
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def home():
     return render_template("index.html")
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template("login.html")
+    if request.method == 'POST':
+        pass
+
+@app.route("/explore")
+@login_required
+def explore():
+    return render_template('explore.html')
 
 # Run
 

@@ -7,6 +7,66 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
 </head>
 <body>
-    <nav class="top">Test</nav>
+    <nav class="top">
+
+
+        <div class="all">
+            <div class="mid">
+                <input type="search" class="search" placeholder="Search For a Billie Eilish Song...">
+            </div>
+
+            <div class="right">
+                {% if current_user.is_authenticated %}
+
+                {% else %}
+                        <img src="../static/icon.png" class="login" alt="login icon"></img>
+                {% endif %}
+            </div>
+        </div>
+
+
+    </nav>
+
+    <div class="main">
+        
+        <div class="carousel">
+            <div class="slides">
+                    <img src="../static/hit-me-hard-and-soft-pc-wallpaper-v0-80blelsdr1zc1.webp" class="slide s1" alt="HMHAS">
+                    <img src="../static/Screen+Shot+2020-05-26+at+2.09.12+PM.webp" class="slide s2" alt="WWAFAWDWG">
+                    <img src="../static/billie-eilish-3840x2160-12396.jpg" class="slide s3" alt="WWAFAWDWG">
+
+
+            </div>
+                <button class="explore">Explore Albums</button>   
+              <button class="prev"><</button>
+
+
+              <button class="next">></button>
+        </div>
+        
+    </div>
+
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const images = document.querySelectorAll('.slide');
+        const explore = document.querySelector('.explore');
+        let index = 0;
+
+        explore.addEventListener('click', ()=> {
+            window.location.href = "{{ url_for('explore') }}"
+        })
+
+        document.querySelector('.next').onclick = () => {
+        index = (index + 1) % images.length;
+        slides.style.transform = `translateX(${-index * 100}%)`;
+        };
+
+        document.querySelector('.prev').onclick = () => {
+        index = (index - 1 + images.length) % images.length;
+        slides.style.transform = `translateX(${-index * 100}%)`;
+        };
+    </script>
+
 </body>
 </html>
