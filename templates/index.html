@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+    <link rel="icon" href="../static/Blohsh.png">
 </head>
 <body>
     <nav class="top">
@@ -51,7 +52,12 @@
         const slides = document.querySelector('.slides');
         const images = document.querySelectorAll('.slide');
         const explore = document.querySelector('.explore');
+        const login = document.querySelector('.login');
         let index = 0;
+
+        login.addEventListener('click', ()=> {
+            window.location.href = "{{ url_for('login') }}"
+        })
 
         explore.addEventListener('click', ()=> {
             window.location.href = "{{ url_for('explore') }}"

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link rel="icon" href="../static/Blohsh.png">
+</head>
+<body>
+
+    <div class="overlay">
+        <div class="bg">
+
+            <div class="left">
+                <h1 class="title2">Sign up</h1>
+                <form action="{{ url_for('login') }}" method="post" class="formcon">
+                    <label class="lbl">Username</label>
+                    <input type="text" class="userinp inp" name="signuser" placeholder="Username" minlength="6" maxlength="24" required>
+                    <label class="lbl">Password</label>
+                    <input type="password" class="passinp inp" name="signpass" placeholder="Password" minlength="6" required>
+                    <label class="lbl">Confirm Password</label>
+                    <input type="password" class="passinp inp" name="signpassconfirm" placeholder="Confirm Password" minlength="6" required>
+                    <input type="submit" class="submit" value="Sign up">
+                </form>
+            </div>
+
+            <div class="middle">
+                <div class="line"></div>
+            </div>
+
+
+
+            <div class="right">
+                <h1 class="title">Log in</h1>
+                <form action="{{ url_for('login') }}" method="post" class="formcon logform">
+                    <label class="lbl">Username</label>
+                    <input type="text" class="userinp inp" name="loguser" placeholder="Username" required>
+                    <label class="lbl">Password</label>
+                    <input type="password" class="passinp inp" name="logpass" placeholder="Password" required>
+                    <input type="submit" class="submit" value="Log in">
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+</html>
