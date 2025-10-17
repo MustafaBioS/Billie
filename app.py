@@ -2,7 +2,7 @@ from flask import Flask, flash, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
-from flask_login import UserMixin, LoginManager, login_required, login_user
+from flask_login import UserMixin, LoginManager, current_user, login_required, login_user, logout_user
 from dotenv import load_dotenv
 import os
 
@@ -35,6 +35,14 @@ class Users(db.Model, UserMixin):
     username = db.Column(db.String(64), unique = True, nullable = False)
     password = db.Column(db.Text, nullable = False)
 
+class Albums(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(100), nullable = False)
+    year = db.Column(db.Integer, nullable = False)
+    description = db.Column(db.Text, nullable = False)
+    cover = db.Column(db.String(200), nullable = False)
+
+
 # Routes
 
 @login_manager.user_loader
@@ -47,6 +55,8 @@ def home():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("home"))
     if request.method == 'GET':
         return render_template("login.html")
     if request.method == 'POST':
@@ -93,6 +103,32 @@ def login():
 def explore():
     return render_template('explore.html')
 
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash("Successfully Logged Out", 'success')
+    return redirect(url_for('home'))
+
+@app.route("/profile", methods=['GET', 'POST'])
+@login_required
+def profile():
+    if request.method == 'GET':
+        return render_template("profile.html")
+    if request.method == 'POST':
+        pass
+
+@app.route("/about/<album_id>", methods=['GET', 'POST'])
+def about(album_id):
+    album = albums.get(album_id)
+    if not album:
+        flash("Invalid Album", 'fail')
+        return redirect(url_for("explore"))
+    if request.method == 'GET':
+        return render_template("about.html")
+    if request.method == 'POST':
+        pass
+    
 # Run
 
 if __name__ == "__main__":

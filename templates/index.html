@@ -18,7 +18,7 @@
 
             <div class="right">
                 {% if current_user.is_authenticated %}
-
+                        <img src="../static/icon.png" class="profile" alt="profile icon"></img>
                 {% else %}
                         <img src="../static/icon.png" class="login" alt="login icon"></img>
                 {% endif %}
@@ -53,11 +53,21 @@
         const images = document.querySelectorAll('.slide');
         const explore = document.querySelector('.explore');
         const login = document.querySelector('.login');
+        const profile = document.querySelector('.profile');
         let index = 0;
 
-        login.addEventListener('click', ()=> {
-            window.location.href = "{{ url_for('login') }}"
-        })
+        if (profile) {
+            profile.addEventListener('click', ()=> {
+                window.location.href = "{url_for('profile')}"
+            })
+        }
+
+        if (login) {
+            login.addEventListener('click', ()=> {
+                window.location.href = "{{ url_for('login') }}"
+            })
+        }
+
 
         explore.addEventListener('click', ()=> {
             window.location.href = "{{ url_for('explore') }}"

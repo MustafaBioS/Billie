@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="../static/Blohsh.png">
+</head>
+<body>
+
+    <nav class="top">
+
+
+        <div class="all">
+            <div class="mid">
+                <input type="search" class="search" placeholder="Search For a Billie Eilish Song...">
+            </div>
+
+            <div class="right">
+                {% if current_user.is_authenticated %}
+                        <img src="../static/icon.png" class="profile" alt="profile icon">
+                {% else %}
+                        <img src="../static/icon.png" class="login" alt="login icon">
+                {% endif %}
+            </div>
+        </div>
+
+
+    </nav>
+
+    <div class="main">
+
+        <div class="grid">
+
+            <div class="onimg">
+                <div class="overlayed"></div>
+                <button class="btn about">About Album</button>
+                <button class="btn view">View Songs</button>
+                <img src="../static/billie.jpg" class="grid-item g1" alt="HMHAS">
+            </div>
+
+            <div class="onimg">
+                <div class="overlayed"></div>
+                <button class="btn about">About Album</button>
+                <button class="btn view">View Songs</button>
+                <img src="../static/6d2b6e28af0d00b7569500dd48355796.jpg" alt="Happier Than Ever" class="grid-item g2">
+            </div>
+
+            <div class="onimg">
+                <div class="overlayed"></div>
+                <button class="btn about">About Album</button>
+                <button class="btn view">View Songs</button>
+                <img src="../static/af7deacb40e6843c0987ae75b4d44fd5.jpg" alt="WWAFAWDWG" class="grid-item g3">
+            </div>
+
+            <div class="onimg">
+                <div class="overlayed"></div>
+                <img src="../static/928d058e1cc7d7731f67424e95c79217.jpg" alt="Don't Smile At Me" class="grid-item g4">
+                <button class="btn about">About Album</button>
+                <button class="btn view">View Songs</button>
+            </div>
+
+
+        </div>
+    </div>
+    
+</body>
+</html>

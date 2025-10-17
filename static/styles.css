@@ -69,6 +69,20 @@ body {
     cursor: pointer;
 }
 
+.profile {
+    width: 150px;
+    height: 65px;
+    width: 65px;
+    font-size: 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.profile:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
 .right {
     display: flex;
     align-items: flex-end;
@@ -163,3 +177,78 @@ body {
     height: 100%;
     width: 100%;
 }
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-top: 175px;
+
+}
+
+.onimg {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.grid-item {
+  display: block;
+  width: 250px;
+  height: 425px;
+  border-radius: 15px;
+  z-index: 1;
+  position: relative;
+}
+
+.btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2;
+}
+
+.about {
+  top: 40%;
+}
+
+.view {
+  top: 50%;
+}
+
+.overlayed {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 425px;
+    position: absolute;
+    width: 250px;
+    z-index: 2;
+    border-radius: 15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.onimg:hover .overlayed {
+    opacity: 1;
+}
+
+.onimg:hover .btn {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
