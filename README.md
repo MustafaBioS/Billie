@@ -8,5 +8,5 @@ and dissappears, i also need to fix up the songs as i added all the albums' song
 **<h1>Self Hosting</h1>**
 > Clone This Repository<br>
 > ``` Git clone https://github.com/MustafaBioS/Billie ```<br>
-> ``` cd into the directory ```<br>
+> cd into the directory <br>
 > ``` python app.py ```
