@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ album.name }}</title>
+    <link rel="stylesheet" href="../static/about.css">
+    <link rel="icon" href="../static/Blohsh.png">
+</head>
+<body>
+
+    <nav class="top">
+
+
+        <div class="all">
+            <div class="mid">
+                <input type="search" class="search" placeholder="Search For a Billie Eilish Song...">
+            </div>
+
+            <div class="right">
+                {% if current_user.is_authenticated %}
+                        <img src="../static/icon.png" class="profile" alt="profile icon"></img>
+                {% else %}
+                        <img src="../static/icon.png" class="login" alt="login icon"></img>
+                {% endif %}
+            </div>
+        </div>
+
+
+    </nav>
+
+        <div class="all">
+
+            <div class="left">
+                <img src="../static/{{ album.cover }}" class="pic" alt="{{ album.name }}">
+            </div>
+            
+            <div class="songBlock">
+                {% for song in songs %}
+                <div class="songline">
+                    <audio class="audio" src="{{ song.audio }}"></audio>
+                    <button class="play">▶︎</button>
+                    <span class="spn">
+                        <h1 class="names n">{{ song.songName }}</h1>
+                        <h1 class="names y">({{ song.year }})</h1>
+                    </span>
+                </div>
+
+                {% endfor %}
+            </div>
+
+        </div>
+
+    <script>
+        const playButtons = document.querySelectorAll(".play");
+        const audioElements = document.querySelectorAll(".audio");
+
+        playButtons.forEach((button, index) => {
+            const audio = audioElements[index];
+
+            button.addEventListener("click", () => {
+                audioElements.forEach((a, i) => {
+                    if (a !== audio) {
+                        a.pause();
+                        a.currentTime = 0;
+                        playButtons[i].textContent = "▶︎";
+                    }
+                });
+
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        button.textContent = "⏸";
+                    })
+                } else {
+                    audio.pause();
+                    button.textContent = "▶︎";
+                }
+            });
+
+            audio.addEventListener("ended", () => {
+                button.textContent = "▶︎";
+            });
+        });
+    </script>
+
+</body>
+</html>

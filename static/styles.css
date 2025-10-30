@@ -198,6 +198,15 @@ body {
   position: relative;
   display: inline-block;
   overflow: hidden;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 40px #0c284e;
+
+}
+
+.onimg:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 2px 50px rgba(0, 0, 0, 0.8);
 }
 
 .grid-item {

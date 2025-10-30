@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ album.name }}</title>
+    <link rel="stylesheet" href="../static/about.css">
+    <link rel="icon" href="../static/Blohsh.png">
+</head>
+<body>
+
+    <nav class="top">
+
+
+        <div class="all">
+            <div class="mid">
+                <input type="search" class="search" placeholder="Search For a Billie Eilish Song...">
+            </div>
+
+            <div class="right">
+                {% if current_user.is_authenticated %}
+                        <img src="../static/icon.png" class="profile" alt="profile icon"></img>
+                {% else %}
+                        <img src="../static/icon.png" class="login" alt="login icon"></img>
+                {% endif %}
+            </div>
+        </div>
+
+
+    </nav>
+
+        <div class="all">
+
+            <div class="left">
+                <img src="../static/{{ album.cover }}" class="pic" alt="{{ album.name }}">
+            </div>
+            
+            <div class="rightBlock">
+                <h1 class="abtitle">About Album</h1>
+                <p class="abdesc">{{ album.description }}</p>
+            </div>
+
+        </div>
+        
+</body>
+</html>

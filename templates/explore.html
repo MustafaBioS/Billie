@@ -32,38 +32,82 @@
     <div class="main">
 
         <div class="grid">
-
+        
             <div class="onimg">
                 <div class="overlayed"></div>
-                <button class="btn about">About Album</button>
-                <button class="btn view">View Songs</button>
+                <button class="btn about a1">About Album</button>
+                <button class="btn view s1">View Songs</button>
                 <img src="../static/billie.jpg" class="grid-item g1" alt="HMHAS">
             </div>
 
             <div class="onimg">
                 <div class="overlayed"></div>
-                <button class="btn about">About Album</button>
-                <button class="btn view">View Songs</button>
+                <button class="btn about a2">About Album</button>
+                <button class="btn view s2">View Songs</button>
                 <img src="../static/6d2b6e28af0d00b7569500dd48355796.jpg" alt="Happier Than Ever" class="grid-item g2">
             </div>
 
             <div class="onimg">
                 <div class="overlayed"></div>
-                <button class="btn about">About Album</button>
-                <button class="btn view">View Songs</button>
+                <button class="btn about a3">About Album</button>
+                <button class="btn view s3">View Songs</button>
                 <img src="../static/af7deacb40e6843c0987ae75b4d44fd5.jpg" alt="WWAFAWDWG" class="grid-item g3">
             </div>
 
             <div class="onimg">
                 <div class="overlayed"></div>
                 <img src="../static/928d058e1cc7d7731f67424e95c79217.jpg" alt="Don't Smile At Me" class="grid-item g4">
-                <button class="btn about">About Album</button>
-                <button class="btn view">View Songs</button>
+                <button class="btn about a4">About Album</button>
+                <button class="btn view s4">View Songs</button>
             </div>
-
 
         </div>
     </div>
-    
+
+<script>
+    const a1 = document.querySelector('.a1');
+    const a2 = document.querySelector('.a2');
+    const a3 = document.querySelector('.a3');
+    const a4 = document.querySelector('.a4');
+    const s1 = document.querySelector('.s1');
+    const s2 = document.querySelector('.s2');
+    const s3 = document.querySelector('.s3');
+    const s4 = document.querySelector('.s4');
+
+
+    a1.addEventListener('click', ()=> {
+        window.location.href = `about/1`;
+    })
+
+    a2.addEventListener('click', ()=> {
+        window.location.href = `about/2`;
+    })
+
+    a3.addEventListener('click', ()=> {
+        window.location.href = `about/3`;
+    })
+
+    a4.addEventListener('click', ()=> {
+        window.location.href = `about/4`;
+    })
+
+    s1.addEventListener('click', ()=> {
+        window.location.href = `songs/1`;
+    })
+
+    s2.addEventListener('click', ()=> {
+        window.location.href = `songs/2`;
+    })
+
+    s3.addEventListener('click', ()=> {
+        window.location.href = `songs/3`;
+    })
+
+    s4.addEventListener('click', ()=> {
+        window.location.href = `songs/4`;
+    })
+
+</script>
+
 </body>
 </html>

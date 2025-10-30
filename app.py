@@ -42,6 +42,14 @@ class Albums(db.Model):
     description = db.Column(db.Text, nullable = False)
     cover = db.Column(db.String(200), nullable = False)
 
+class Songs(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    songName = db.Column(db.String(100), nullable = False)
+    year = db.Column(db.Integer, nullable = False)
+    albumFrom = db.Column(db.String(100), db.ForeignKey('albums.id'), nullable = False)
+    audio = db.Column(db.String(200), nullable = False)
+
+    album = db.relationship('Albums', backref=db.backref('songs', lazy=True))
 
 # Routes
 
@@ -101,6 +109,7 @@ def login():
 @app.route("/explore")
 @login_required
 def explore():
+    albums = Albums.query.all()
     return render_template('explore.html')
 
 @app.route("/logout")
@@ -118,17 +127,30 @@ def profile():
     if request.method == 'POST':
         pass
 
-@app.route("/about/<album_id>", methods=['GET', 'POST'])
+@app.route("/about/<int:album_id>", methods=['GET', 'POST'])
 def about(album_id):
-    album = albums.get(album_id)
+    album = Albums.query.get(album_id)
     if not album:
         flash("Invalid Album", 'fail')
         return redirect(url_for("explore"))
+    
     if request.method == 'GET':
-        return render_template("about.html")
+        return render_template("about.html", album=album)
+    
     if request.method == 'POST':
         pass
+
+@app.route("/songs/<int:album_id>")
+def songs(album_id):
+    album = Albums.query.get(album_id)
+    songs = Songs.query.filter_by(albumFrom=album_id).all()
+    if not album:
+        flash("Invalid Album", 'fail')
+        return redirect(url_for("explore"))
     
+    if request.method == 'GET':
+        return render_template("songs.html", album=album, songs=songs)
+
 # Run
 
 if __name__ == "__main__":
