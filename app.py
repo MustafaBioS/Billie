@@ -119,14 +119,6 @@ def logout():
     flash("Successfully Logged Out", 'success')
     return redirect(url_for('home'))
 
-@app.route("/profile", methods=['GET', 'POST'])
-@login_required
-def profile():
-    if request.method == 'GET':
-        return render_template("profile.html")
-    if request.method == 'POST':
-        pass
-
 @app.route("/about/<int:album_id>", methods=['GET', 'POST'])
 def about(album_id):
     album = Albums.query.get(album_id)

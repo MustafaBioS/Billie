@@ -18,7 +18,13 @@
 
             <div class="right">
                 {% if current_user.is_authenticated %}
-                        <img src="../static/icon.png" class="profile" alt="profile icon"></img>
+                    <div class="all">
+                        <img src="../static/icon.png" class="profile" alt="profile icon">
+                        <div class="bottom">
+                            <button class="btn">Logout</button>
+                        </div>
+                    </div>
+                </div>
                 {% else %}
                         <img src="../static/icon.png" class="login" alt="login icon"></img>
                 {% endif %}
@@ -55,11 +61,21 @@
         const login = document.querySelector('.login');
         const profile = document.querySelector('.profile');
         let index = 0;
+        const bot = document.querySelector('.bottom');
+        var vis = false
 
         if (profile) {
             profile.addEventListener('click', ()=> {
-                window.location.href = "{url_for('profile')}"
-            })
+            if (vis === false) {
+                    bot.style.display = 'block';
+                    vis = true;
+                }
+            else if (vis === true) {
+                bot.style.display = 'none';
+                vis = false;
+            }
+        })
+
         }
 
         if (login) {
@@ -67,7 +83,6 @@
                 window.location.href = "{{ url_for('login') }}"
             })
         }
-
 
         explore.addEventListener('click', ()=> {
             window.location.href = "{{ url_for('explore') }}"

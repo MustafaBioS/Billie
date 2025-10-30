@@ -161,7 +161,14 @@ body {
     font-size: 30px;
     color: white;
     margin-right: 45px;
+    transition: all 0.3s ease;
 }
+
+.play:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
 
 .names {
     color: white;
